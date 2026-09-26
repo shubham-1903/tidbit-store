@@ -1,6 +1,3 @@
-> **Project Structure:** All frontend code lives inside the `frontend/` directory. 
-> The Tailwind config is at `frontend/tailwind.config.ts`. 
-> Components are at `frontend/src/components/`.
 ---
 name: design-system
 description: Tidbit brand design tokens and component rules. Load for ANY UI work — components, pages, tables, buttons, chips, cards. This is the single source of truth for visual output.
@@ -10,6 +7,10 @@ description: Tidbit brand design tokens and component rules. Load for ANY UI wor
 
 > Full reference: `docs/design/DESIGN.md`. This file is the agent-executable summary.
 > ⚠️ Where DESIGN.md YAML and narrative conflict, the **narrative section values win** (they match the approved mockup).
+
+> **Project Structure:** All frontend code lives inside the `frontend/` directory. 
+> The Tailwind config is at `frontend/tailwind.config.ts`. 
+> Components are at `frontend/src/components/`.
 
 ## Color Tokens — Foundation
 
