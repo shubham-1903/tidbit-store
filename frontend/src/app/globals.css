@@ -1,26 +1,180 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Foundation tokens */
+  --canvas: #F9F9F6;
+  --surface: #FFFFFF;
+  --surface-subtle: #F3F2ED;
+  --border: #E7E5E4;
+  --text-primary: #212121;
+  --text-muted: #57534E;
+  --text-subtle: #78716C;
+
+  /* Species: Budgerigar (Primary - Green) */
+  --species-budgie-base: #2E7D32;
+  --species-budgie-hover: #4CAF50;
+  --species-budgie-deepen: #276A2B;
+  --species-budgie-wash: #E8F5E9;
+
+  /* Species: Lovebird & Cockatiel (Secondary - Magenta) */
+  --species-lovebird-base: #AD1457;
+  --species-lovebird-hover: #D81B60;
+  --species-lovebird-wash: #FCE4EC;
+
+  /* Species: Finch & Canary (Tertiary - Amber) */
+  --species-finch-base: #F57F17;
+  --species-finch-hover: #FBC02D;
+  --species-finch-wash: #FFF8E1;
+
+  /* Tonal Elevations */
+  --shadow-level1: 0 2px 8px -2px rgba(33, 33, 33, 0.04), 0 1px 4px -1px rgba(33, 33, 33, 0.02);
+  --shadow-level2: 0 12px 24px -6px rgba(46, 125, 50, 0.06), 0 4px 12px -2px rgba(33, 33, 33, 0.04);
+  --shadow-level3: 0 24px 48px -12px rgba(33, 33, 33, 0.12);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --font-jakarta: var(--font-plus-jakarta-sans), sans-serif;
+  --font-inter: var(--font-inter), sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-border: var(--border);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+
+  --color-species-budgie-base: var(--species-budgie-base);
+  --color-species-budgie-hover: var(--species-budgie-hover);
+  --color-species-budgie-deepen: var(--species-budgie-deepen);
+  --color-species-budgie-wash: var(--species-budgie-wash);
+
+  --color-species-lovebird-base: var(--species-lovebird-base);
+  --color-species-lovebird-hover: var(--species-lovebird-hover);
+  --color-species-lovebird-wash: var(--species-lovebird-wash);
+
+  --color-species-finch-base: var(--species-finch-base);
+  --color-species-finch-hover: var(--species-finch-hover);
+  --color-species-finch-wash: var(--species-finch-wash);
+
+  --shadow-level1: var(--shadow-level1);
+  --shadow-level2: var(--shadow-level2);
+  --shadow-level3: var(--shadow-level3);
+
+  --radius-sm: 4px;
+  --radius-DEFAULT: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--canvas);
+  color: var(--text-primary);
+  font-family: var(--font-inter), sans-serif;
+  min-height: 100vh;
+}
+
+/* Typography Utility Classes */
+.font-display-lg {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 4rem;
+  letter-spacing: -0.02em;
+}
+
+.font-display-lg-mobile {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 2.75rem;
+}
+
+.font-headline-lg {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3rem;
+  letter-spacing: -0.015em;
+}
+
+.font-headline-md {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+}
+
+.font-headline-sm {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.875rem;
+}
+
+.font-title-md {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.625rem;
+}
+
+.font-title-sm {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.font-body-lg {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+  letter-spacing: -0.005em;
+}
+
+.font-body-md {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.font-body-sm {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+
+.font-label-lg {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.font-label-sm {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.font-caption {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 0.875rem;
+  letter-spacing: 0.04em;
+}
+
+.tabular-numbers {
+  font-variant-numeric: tabular-nums;
 }
