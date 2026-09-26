@@ -1,7 +1,10 @@
 import React from 'react';
 import { AnnouncementBar, Header } from '@/components/layout';
-import { HeroSection } from '@/components/home/HeroSection';
-import { SpeciesSection } from '@/components/species/SpeciesSection';
+import { HeroSection, VetEndorsement } from '@/components/home';
+import { SpeciesSection } from '@/components/species';
+import { ProductGrid } from '@/components/product';
+import { NutritionalAnalysisTable } from '@/components/nutrition';
+import { MiniCartDrawer } from '@/components/cart';
 
 export default function HomePage() {
   return (
@@ -19,7 +22,19 @@ export default function HomePage() {
 
         {/* Species Navigation & Taxonomy Section */}
         <SpeciesSection />
+
+        {/* Curated Product Grid */}
+        <ProductGrid />
+
+        {/* Cross-Species Nutritional Analysis Table & Standards */}
+        <NutritionalAnalysisTable />
+
+        {/* Veterinary Authority Endorsement */}
+        <VetEndorsement />
       </main>
+
+      {/* Slide-over Mini-Cart Drawer */}
+      <MiniCartDrawer />
     </div>
   );
 }

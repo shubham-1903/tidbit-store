@@ -8,6 +8,7 @@ import { useCartStore } from '@/store/cartStore';
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const items = useCartStore((state) => state.items);
+  const openCart = useCartStore((state) => state.openCart);
   const totalItemCount = items.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -100,7 +101,8 @@ export function Header() {
           {/* Cart Icon with Counter */}
           <button
             type="button"
-            className="relative p-2 text-text-primary hover:text-species-budgie-base rounded-full hover:bg-surface-subtle transition-colors"
+            onClick={openCart}
+            className="relative p-2 text-text-primary hover:text-species-budgie-base rounded-full hover:bg-surface-subtle transition-colors cursor-pointer"
             aria-label={`Shopping cart with ${totalItemCount} items`}
           >
             <ShoppingBag className="w-5 h-5" aria-hidden="true" />

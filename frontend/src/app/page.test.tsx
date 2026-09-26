@@ -23,15 +23,29 @@ describe('HomePage', () => {
     expect(h1).toHaveTextContent(/avian nutrition/i);
     expect(h1).toHaveTextContent(/precision-milled/i);
 
-    const h2 = screen.getByRole('heading', { level: 2 });
-    expect(h2).toHaveTextContent(/tailored by species/i);
+    const h2s = screen.getAllByRole('heading', { level: 2 });
+    expect(h2s.some((h) => h.textContent?.includes('Tailored by Species'))).toBe(true);
+    expect(h2s.some((h) => h.textContent?.includes('Fresh Batches Ready to Ship'))).toBe(true);
+    expect(h2s.some((h) => h.textContent?.includes('Why Avian Caretakers Trust Tidbit'))).toBe(true);
   });
 
-  it('contains the Budgerigar species card with link to /budgerigar', () => {
+  it('renders 3 core POC formulas in the product grid', () => {
     render(<HomePage />);
-    const budgieCard = screen.getByTestId('species-card-budgerigar');
-    expect(budgieCard).toBeInTheDocument();
-    const link = budgieCard.querySelector('a');
-    expect(link).toHaveAttribute('href', '/budgerigar');
+    expect(screen.getByText('Tidbit Parakeet & Budgerigar Daily Vitality')).toBeInTheDocument();
+    expect(screen.getByText('Tidbit Premium Lovebird & Cockatiel Seed Mix')).toBeInTheDocument();
+    expect(screen.getByText('Tidbit Goldfinch / French & Canary Seed Formula')).toBeInTheDocument();
+  });
+
+  it('renders the cross-species nutritional comparison table', () => {
+    render(<HomePage />);
+    expect(screen.getByText('Guaranteed Nutritional Analysis Across Blends')).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: /budgerigar daily vitality/i })).toBeInTheDocument();
+    expect(screen.getByText('11.5%')).toBeInTheDocument();
+  });
+
+  it('renders the resident avian clinician endorsement', () => {
+    render(<HomePage />);
+    expect(screen.getByText('Dr. Elena Lin, DVM')).toBeInTheDocument();
+    expect(screen.getByText(/seed quality isn't just about calories/i)).toBeInTheDocument();
   });
 });
